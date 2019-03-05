@@ -1,13 +1,13 @@
 <?php
 
-class ControllerExtensionModuleStarter extends Controller {
+class ControllerExtensionModuleModulename extends Controller {
 	
 	private $error = array(); 
 	
 	public function index() {   
 
 		//Load language file
-		$this->load->language('extension/module/starter');
+		$this->load->language('extension/module/modulename');
 
 		//Set title from language file
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -18,7 +18,7 @@ class ControllerExtensionModuleStarter extends Controller {
 		//Save settings
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			if (!isset($this->request->get['module_id'])) {
-				$this->model_extension_module->addModule('starter', $this->request->post);
+				$this->model_extension_module->addModule('modulename', $this->request->post);
 			} else {
 				$this->model_extension_module->editModule($this->request->get['module_id'], $this->request->post);
 			}
@@ -88,19 +88,19 @@ class ControllerExtensionModuleStarter extends Controller {
 		if (!isset($this->request->get['module_id'])) {
 			$data['breadcrumbs'][] = array(
 				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('extension/module/starter', 'token=' . $this->session->data['token'], 'SSL')
+				'href' => $this->url->link('extension/module/modulename', 'token=' . $this->session->data['token'], 'SSL')
 				);
 		} else {
 			$data['breadcrumbs'][] = array(
 				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('extension/module/starter', 'token=' . $this->session->data['token'] . '&module_id=' . $this->request->get['module_id'], 'SSL')
+				'href' => $this->url->link('extension/module/modulename', 'token=' . $this->session->data['token'] . '&module_id=' . $this->request->get['module_id'], 'SSL')
 				);
 		}
 		
 		if (!isset($this->request->get['module_id'])) {
-			$data['action'] = $this->url->link('extension/module/starter', 'token=' . $this->session->data['token'], 'SSL');
+			$data['action'] = $this->url->link('extension/module/modulename', 'token=' . $this->session->data['token'], 'SSL');
 		} else {
-			$data['action'] = $this->url->link('extension/module/starter', 'token=' . $this->session->data['token'] . '&module_id=' . $this->request->get['module_id'], 'SSL');
+			$data['action'] = $this->url->link('extension/module/modulename', 'token=' . $this->session->data['token'] . '&module_id=' . $this->request->get['module_id'], 'SSL');
 		}
 
 		$data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'], 'SSL');
@@ -143,11 +143,11 @@ class ControllerExtensionModuleStarter extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 
 		//Send the output
-		$this->response->setOutput($this->load->view('extension/module/starter.tpl', $data));
+		$this->response->setOutput($this->load->view('extension/module/modulename.tpl', $data));
 	}
 	
 	private function validate() {
-		if (!$this->user->hasPermission('modify', 'extension/module/starter')) {
+		if (!$this->user->hasPermission('modify', 'extension/module/modulename')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 		

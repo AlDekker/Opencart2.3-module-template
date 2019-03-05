@@ -1,11 +1,11 @@
 <?php
 
-class ControllerExtensionModuleStarter extends Controller {
+class ControllerExtensionModuleModulename extends Controller {
 	
 	public function index($setting) {
 		
 		//Load language file
-		$this->language->load('extension/module/starter');
+		$this->language->load('extension/module/modulename');
 
 		//Set title from language file
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -18,7 +18,7 @@ class ControllerExtensionModuleStarter extends Controller {
 		$data['field'] = $setting['field'];
 
 		//Select template
-		return $this->load->view('extension/module/starter', $data);
+		return $this->load->view('extension/module/modulename', $data);
 
 	}
 }
